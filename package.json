@@ -1,0 +1,20 @@
+{
+	"name": "coreserver",
+	"version": "1.0.0",
+	"description": "CoreServer",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Etriz/CoreServer.git"
+	},
+	"author": "",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Etriz/CoreServer/issues"
+	},
+	"homepage": "https://github.com/Etriz/CoreServer#readme"
+}
