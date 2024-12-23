@@ -49,6 +49,7 @@ export const handler = async (event, context) => {
 		},
 		body: JSON.stringify({
 			message: 'Email Sent!',
+			data: bodyData,
 		}),
 	};
 };
