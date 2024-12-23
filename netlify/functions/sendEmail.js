@@ -25,7 +25,7 @@ export const handler = async (event, context) => {
 	const bodyData = JSON.parse(event.body);
 	const mailOptions = {
 		from: 'corelotstore@gmail.com',
-		to: 'leland.ratke@ethereal.email',
+		to: 'media@core-companies.com',
 		subject: 'CoreLotStore Contact',
 		text: `Parcel County ID: ${bodyData.id}`,
 		html: `<h2>${bodyData.firstName} ${bodyData.lastName}</h2>
@@ -44,6 +44,9 @@ export const handler = async (event, context) => {
 	});
 	return {
 		statusCode: 200,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+		},
 		body: JSON.stringify({
 			message: 'Email Sent!',
 		}),
