@@ -13,6 +13,7 @@
 		<button id="fetch-btn">Fetch</button>
 		<button id="fetch-kanto-btn">Fetch Kanto Pokedex</button>
 		<button id="fetch-hoenn-btn">Fetch Hoenn Pokedex</button>
+		<button id="send-email-btn">Send Test Email</button>
 		<p id="response-output">Response Placeholder</p>
 
 		<script>
@@ -23,6 +24,7 @@
 					document.getElementById('fetch-kanto-btn');
 				const fetchHoennBtn =
 					document.getElementById('fetch-hoenn-btn');
+				const sendEmailBtn = document.getElementById('send-email-btn');
 
 				fetchBtn.addEventListener('click', async () => {
 					const response = await fetch(
@@ -55,6 +57,24 @@
 						}
 					).then((response) => response.json());
 					responseText.innerText = JSON.stringify(response);
+				});
+
+				sendEmailBtn.addEventListener('click', async () => {
+					const response = await fetch(
+						'/.netlify/functions/sendEmail',
+						{
+							method: 'POST',
+							body: JSON.stringify({
+								id: '82444',
+								firstName: 'First',
+								lastName: 'Last',
+								email: 'email@gmail.com',
+								phone: '605-438-2673',
+							}),
+						}
+					).then((response) => response.json());
+					responseText.innerText = JSON.stringify(response);
+					console.log(JSON.stringify(response));
 				});
 			});
 		</script>
