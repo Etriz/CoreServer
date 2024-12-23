@@ -6,6 +6,7 @@ const transporter = nodemailer.createTransport({
 	service: 'Gmail',
 	host: 'smtp.gmail.com',
 	port: 465,
+	greetingTimeout: 1000 * 50,
 	secure: true,
 	auth: {
 		user: 'ryanpanimation@gmail.com',
