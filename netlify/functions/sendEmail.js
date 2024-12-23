@@ -2,24 +2,24 @@ const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 dotenv.config();
 
-// const transporter = nodemailer.createTransport({
-// 	service: 'Gmail',
-// 	host: 'smtp.gmail.com',
-// 	port: 465,
-// 	secure: true,
-// 	auth: {
-// 		user: 'ryanpanimation@gmail.com',
-// 		pass: process.env.APP_EMAIL_PW,
-// 	},
-// });
-const etherealTransporter = nodemailer.createTransport({
-	host: 'smtp.ethereal.email',
-	port: 587,
+const transporter = nodemailer.createTransport({
+	service: 'Gmail',
+	host: 'smtp.gmail.com',
+	port: 465,
+	secure: true,
 	auth: {
-		user: 'leland.ratke@ethereal.email',
-		pass: 'RB3ekMYM85VEQMTHXk',
+		user: 'ryanpanimation@gmail.com',
+		pass: process.env.APP_EMAIL_PW,
 	},
 });
+// const etherealTransporter = nodemailer.createTransport({
+// 	host: 'smtp.ethereal.email',
+// 	port: 587,
+// 	auth: {
+// 		user: 'leland.ratke@ethereal.email',
+// 		pass: 'RB3ekMYM85VEQMTHXk',
+// 	},
+// });
 
 export const handler = async (event, context) => {
 	const bodyData = JSON.parse(event.body);
@@ -35,7 +35,7 @@ export const handler = async (event, context) => {
 			`,
 	};
 
-	etherealTransporter.sendMail(mailOptions, (error, info) => {
+	transporter.sendMail(mailOptions, (error, info) => {
 		if (error) {
 			console.error('Error sending email: ', error);
 		} else {
