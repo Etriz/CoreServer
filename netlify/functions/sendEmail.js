@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
 	greetingTimeout: 1000 * 50,
 	secure: true,
 	auth: {
-		user: 'ryanpanimation@gmail.com',
+		user: process.env.APP_EMAIL_USER,
 		pass: process.env.APP_EMAIL_PW,
 	},
 });
@@ -28,11 +28,11 @@ export const handler = async (event, context) => {
 		from: 'corelotstore@gmail.com',
 		to: 'media@core-companies.com',
 		subject: 'CoreLotStore Contact',
-		text: `Parcel County ID: ${bodyData.id}`,
+		text: `Parcel County ID: ${bodyData.COUNTYID}`,
 		html: `<h2>${bodyData.firstName} ${bodyData.lastName}</h2>
 				<p>Email: ${bodyData.email}</p>
 				<p>Phone: ${bodyData?.phone}</p>
-				<p>Parcel County ID: ${bodyData.id}</p>
+				<p>Parcel County ID: ${bodyData.COUNTYID}</p>
 			`,
 	};
 
